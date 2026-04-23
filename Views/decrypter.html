@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <title>Decrypter</title>
+</head>
+<body>
+    <label for="encrypted">Enter your encrypted message</label><br>
+    <textarea oninput="autoResize(this)" id="encrypted" required placeholder="encrypted message" style="height: 100px; width:500px; resize: none;" placeholder="Enter encrypted message" ></textarea><br>
+
+    <label for="passphrase">Enter your passphrase</label><br>
+    <textarea id="passphrase" placeholder="passphrase" required></textarea><br>
+
+      <label for="times">Layers of encryption applied at time of encryption</label><br>
+    <select id="times">
+        <option disabled>Select Layers of encryption</option>
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select><br>
+    <button type="button" id="decrypt">Decrypt now</button><br>
+
+    <textarea id="decrypted" style="width: 300px;" disabled></textarea><br>
+    
+    <button id="copyBtn" disabled onclick="copyToClipboard(this)">📋Copy</button>
+
+    <p>Want to encrypt?<a href="encrypter.html">Click here</a></p>
+
+
+  <div id="error">
+    <p id="errorMessage" style="color: red;background-color:gray;"></p>
+  </div>
+
+</body>
+
+<script>
+     function copyToClipboard(id){
+
+            const txt=$("#decrypted").val()
+            navigator.clipboard.writeText(txt);
+            $(id).text("✅Copied!!");
+            setTimeout(()=>{
+                $(id).text("📋Copy");
+            },2000);
+        }
+     function resizeOutputTextArea(id,output){
+            const ta=document.getElementById(id);
+            ta.value=output;
+            ta.style.height='auto';
+            ta.style.height=ta.scrollHeight+'px';
+        }
+$("#decrypt").on("click",function(){
+    const data={
+        secret:$("#encrypted").val(),
+        passphrase:$("#passphrase").val(),
+        times:$("#times").val(),
+        mode:'decrypt'
+
+    };
+    $.ajax({
+        url:"../Controller/Controller.php",
+        type:"POST",
+        data:data,
+        dataType:"json",
+        success:function(res){
+            if(res.status==="success"){
+                $("#copyBtn").removeAttr('disabled');
+                resizeOutputTextArea("decrypted",res.response);
+                console.log("Status:"+res.status+"\nresponse:"+res.response);            
+            }
+            else{
+                console.log(res.response);
+            }
+        },
+        error:function(xhr){
+                $("#errorMessage").text(xhr.responseJSON.message);            
+        }
+    });
+});
+
+function autoResize(textarea){
+    textarea.style.height='auto';
+    textarea.style.height=textarea.scrollHeight+'px';
+}
+</script>
+</html>
