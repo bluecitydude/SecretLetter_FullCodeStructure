@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecretLetter | Cyber Vault</title>
+    <link rel="stylesheet" href="css/cyber_style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">SecretLetter</div>
+        <div class="subtitle">Zero-Storage Multi-Layer Encryption Platform</div>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="cyber_index.html" class="nav-link active">APP</a>
+            <a href="api_docs.html" class="nav-link">API DOCS</a>
+            <a href="tech_stack.html" class="nav-link">TECH STACK</a>
+            <a href="https://www.linkedin.com/in/tejendra-purohit-14b753311/" class="nav-link" target="_blank" rel="noreferrer noopener">CREATOR</a>
+            <a href="https://github.com/bluecitydude/SecretLetter_FullCodeStructure" class="nav-link" target="_blank" rel="noreferrer noopener">CODE</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="glass-panel">
+            <div class="loader-overlay" id="loader">
+                <div class="cyber-loader">Processing Data</div>
+            </div>
+
+            <div class="mode-toggle">
+                <button class="mode-btn active" data-mode="encrypt">ENCRYPT</button>
+                <button class="mode-btn" data-mode="decrypt">DECRYPT</button>
+            </div>
+
+            <div class="form-group" id="formGroupMessage">
+                <label for="messageInput">YOUR MESSAGE</label>
+                <textarea id="messageInput" class="input-cyber" placeholder="Enter the secret you wish to encrypt..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="passphraseInput">ACCESS KEY (PASSPHRASE)</label>
+                <div class="password-field">
+                    <input type="password" id="passphraseInput" class="input-cyber" placeholder="Enter secure key (max 20 chars)" maxlength="20">
+                    <button type="button" id="togglePassphraseBtn" class="password-toggle" aria-label="Toggle passphrase visibility">👁️</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="layersInput">SECURITY LAYERS: <span id="layersVal" class="layers-display">1</span></label>
+                <div class="layers-control">
+                    <input type="range" id="layersInput" min="1" max="5" value="1">
+                </div>
+            </div>
+
+            <div id="statusMsg" class="status-msg"></div>
+
+            <button id="mainActionBtn" class="btn-cyber">INITIATE ENCRYPTION</button>
+
+            <div id="resultContainer" class="result-container">
+                <div class="form-group result-box">
+                    <label for="resultOutput">OUTPUT SYSTEM:</label>
+                    <textarea id="resultOutput" class="input-cyber" readonly></textarea>
+                    <button id="copyBtn" class="btn-copy">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        COPY RESULT
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/cyber_app.js"></script>
+</body>
+</html>

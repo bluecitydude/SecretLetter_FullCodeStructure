@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecretLetter | Tech Stack</title>
+    <link rel="stylesheet" href="css/cyber_style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">SecretLetter</div>
+        <div class="subtitle">Technology Stack Behind the Secure Messaging Platform</div>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="cyber_index.html" class="nav-link">APP</a>
+            <a href="api_docs.html" class="nav-link">API DOCS</a>
+            <a href="tech_stack.html" class="nav-link active">TECH STACK</a>
+            <a href="https://www.linkedin.com/in/tejendra-purohit-14b753311/" class="nav-link" target="_blank" rel="noreferrer noopener">CREATOR</a>
+            <a href="https://github.com/bluecitydude/SecretLetter_FullCodeStructure" class="nav-link" target="_blank" rel="noreferrer noopener">CODE</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="glass-panel">
+            <section class="docs-section">
+                <h2>Frontend</h2>
+                <p>The user interface is built with plain HTML, CSS, and JavaScript to keep the experience lightweight, fast, and easy to host on static deployment platforms like Vercel.</p>
+                <ul style="color: var(--text-muted); font-family: var(--font-mono); line-height: 1.7;">
+                    <li><strong>HTML</strong> for structure and page content.</li>
+                    <li><strong>CSS</strong> for the cyber-inspired visual design and responsive layout.</li>
+                    <li><strong>JavaScript</strong> for UI behavior, mode switching, form validation, and API integration.</li>
+                </ul>
+            </section>
+
+            <section class="docs-section">
+                <h2>Backend</h2>
+                <p>The backend is a headless PHP API that performs encryption and decryption using OpenSSL. It is designed to expose a single API-only endpoint for secure payload handling.</p>
+                <ul style="color: var(--text-muted); font-family: var(--font-mono); line-height: 1.7;">
+                    <li><strong>PHP</strong> handles request processing, JSON parsing, and response generation.</li>
+                    <li><strong>OpenSSL</strong> provides industry-standard cryptographic operations used by the encryption engine.</li>
+                    <li><strong>Headless API</strong> means the backend does not render UI pages; it returns JSON responses that the frontend or external clients consume.</li>
+                </ul>
+            </section>
+
+            <section class="docs-section">
+                <h2>Deployment</h2>
+                <p>This project is built to support separate deployments for frontend and backend:</p>
+                <ul style="color: var(--text-muted); font-family: var(--font-mono); line-height: 1.7;">
+                    <li><strong>Frontend:</strong> deployable on Vercel for static hosting and fast CDN distribution.</li>
+                    <li><strong>Backend:</strong> deployable on Render as a headless API service.</li>
+                </ul>
+            </section>
+
+            <section class="docs-section">
+                <h2>Architecture</h2>
+                <p>The application is intentionally separated into two layers:</p>
+                <ul style="color: var(--text-muted); font-family: var(--font-mono); line-height: 1.7;">
+                    <li><strong>Client layer</strong> manages user interactions and sends requests to the API.</li>
+                    <li><strong>API layer</strong> handles encryption and decryption operations without persisting sensitive data.</li>
+                </ul>
+                <p>The API endpoint is designed to be stateless: each request must include the mode, secret data, passphrase, and layer count.</p>
+            </section>
+
+            <section class="docs-section">
+                <h2>Why this stack?</h2>
+                <p>The chosen stack is ideal for secure utility projects because it is simple, widely supported, and easy to deploy:</p>
+                <ul style="color: var(--text-muted); font-family: var(--font-mono); line-height: 1.7;">
+                    <li>Plain frontend tooling keeps the UI fast and dependency-free.</li>
+                    <li>PHP + OpenSSL provides compatibility across most shared hosts and modern PHP platforms.</li>
+                    <li>Split frontend/backend deployment enables a modern JAMstack-like workflow with a secure API backend.</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
